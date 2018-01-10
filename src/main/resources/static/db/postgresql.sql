@@ -39,11 +39,17 @@ CREATE TABLE user_role
   user_id integer NOT NULL,
   role_id integer NOT NULL,
   CONSTRAINT user_role_pkey PRIMARY KEY (user_id, role_id),
-  CONSTRAINT "FK859n2jvi8ivhui0rl0esws6o" FOREIGN KEY (user_id)
+  --CONSTRAINT "FK859n2jvi8ivhui0rl0esws6o" FOREIGN KEY (user_id)
+  --    REFERENCES "user" (user_id) MATCH SIMPLE
+  --    ON UPDATE NO ACTION ON DELETE NO ACTION,
+  --CONSTRAINT "FKa68196081fvovjhkek5m97n3y" FOREIGN KEY (role_id)
+  --    REFERENCES role (role_id) MATCH SIMPLE
+  --    ON UPDATE NO ACTION ON DELETE NO ACTION
+  FOREIGN KEY (user_id)
       REFERENCES "user" (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "FKa68196081fvovjhkek5m97n3y" FOREIGN KEY (role_id)
-      REFERENCES role (role_id) MATCH SIMPLE
+  FOREIGN KEY (role_id)
+      REFERENCES "role" (role_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
